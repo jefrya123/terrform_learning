@@ -5,6 +5,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami           = var.ami_id
   instance_type = var.instance_type
+  key_name	= var.ssh_key_name
 
   tags = {
     Name = "terraform-example"
@@ -19,3 +20,12 @@ resource "aws_s3_bucket" "example_bucket" {
   }
 }
 
+output "instance_public_ip" {
+  value = aws_instance.example.public_ip
+  description = "The public IP address of the EC2 instance"
+}
+
+output "ssh_username" {
+  value = "ec2-user"  # Replace with "ubuntu" if using an Ubuntu AMI
+  description = "The SSH username for the EC2 instance"
+}

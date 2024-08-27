@@ -16,3 +16,9 @@ variable "s3_bucket_name" {
   default     = "my-unique-bucket-name-terraf0rm"  # Ensure this is globally unique
 }
 
+variable "ssh_key_name" {
+  description = "The name of the SSH key pair to use for the EC2 instance"
+  type        = string
+  default     = "my-key-name"  # Set to the correct key pair name
+}
+
